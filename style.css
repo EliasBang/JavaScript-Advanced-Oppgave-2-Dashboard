@@ -152,8 +152,8 @@ select {
   width: 23.5rem;
 }
 
-#new-card:hover:not(#new-card-back) {
-  transform: scale(1.03);
+#new-card-front:hover {
+  transform: scale(1.05);
 }
 
 #new-card-inner {

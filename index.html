@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+    <title>Project Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <h1>Personal Projects Dashboard</h1>
+
+    </header>
+    <main>
+        <div id="add-and-container">
+            <div id="new-card">
+                <div id="new-card-inner">
+                    <div id="new-card-back" class="add-new-project-card card ">
+                        <form id="new-card-form">
+                            <fieldset>
+                                <legend>
+                                    <h3>Project:</h3>
+                                </legend>
+                                <div class="text-input">
+                                    <label for="project-name">Name:</label>
+                                    <input type="text" name="projectName" id="project-name" placeholder="Project 1">
+                                </div>
+
+                                <div class="text-input">
+                                    <label for="repo-link">Link to repo:</label>
+                                    <input type="text" name="repoLink" id="repo-link" placeholder="Optional">
+                                </div>
+
+                                <div class="text-input">
+                                    <label for="status">Status:</label>
+                                    <select name="status" id="status">
+                                        <option value="active">Active development</option>
+                                        <option value="stable">Stable release</option>
+                                        <option value="hiatus">Hiatus</option>
+                                        <option value="abandoned">Abandoned</option>
+                                    </select>
+                                </div>
+                                <div class="text-input">
+                                    <label for="previous-issue">Previous issue:</label>
+                                    <input type="text" name="previousIssue" id="previous-issue"
+                                        placeholder="Added leaderboard">
+                                </div>
+
+                                <div class="text-input">
+                                    <label for="current-issue">Current issue:</label>
+                                    <input type="text" name="currentIssue" id="current-issue"
+                                        placeholder="Fixing core program flow">
+                                </div>
+
+                                <div class="text-input">
+                                    <label for="next-issue">Next issue:</label>
+                                    <input type="text" name="nextIssue" id="next-issue" placeholder="Optional">
+                                </div>
+
+                                <div class="text-input">
+                                    <label for="date-started">Date Started:</label>
+                                    <input type="text" name="dateStarted" id="date-started"
+                                        placeholder="2016 / Unknown">
+                                </div>
+
+                                <div class="text-input">
+                                    <label for="last-worked-on">Last worked on:</label>
+                                    <input type="text" name="lastWorkedOn" id="last-worked-on" placeholder="April 2026">
+                                </div>
+
+                                <div id="submit-btn">
+                                    <button type="submit">Create Project Card</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="new-card-front" class="add-new-project-card card ">
+                        <h3>Add new project</h3>
+                        <img src="images/plus-icon.svg" alt="plus-icon" class="plus-icon">
+                    </div>
+                </div>
+            </div>
+            <section class="cards-container">
+            </section>
+        </div>
+        <section class="stat-cards-container">
+            <div class="stat-card"></div>
+
+        </section>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

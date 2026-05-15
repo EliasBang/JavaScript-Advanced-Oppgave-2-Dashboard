@@ -66,10 +66,9 @@ select {
   display: flex;
   gap: 1rem;
   flex-direction: column;
-  min-width: fit-content;
   overflow: hidden;
   padding: 12px 10px;
-  width: 15rem;
+  width: 20rem;
 }
 
 .cards-container {

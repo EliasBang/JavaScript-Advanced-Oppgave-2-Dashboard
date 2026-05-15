@@ -29,11 +29,16 @@ body {
 button[type="submit"] {
   background-color: #00d73d;
   border-radius: 1rem;
-  color: var(--text-color);
+  border: var(--text-color) 2px outset;
+  color: black;
   font-weight: bold;
   height: 2rem;
   margin: 1rem 0;
   width: 50%;
+}
+
+button[type="submit"]:active {
+  border: var(--text-color) 2px inset;
 }
 
 h1 {
@@ -69,6 +74,7 @@ select {
   overflow: hidden;
   padding: 12px 10px;
   width: 20rem;
+  min-width: 20rem;
 }
 
 .cards-container {
@@ -85,14 +91,19 @@ select {
   width: fit-content;
   padding: 0 0.5rem;
   font-weight: bold;
-  border: solid 1px white;
+  border: outset 1px white;
   background-color: crimson;
   border-radius: 1rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .delete-btn:hover {
   transform: scale(1.1);
+}
+
+.delete-btn:active {
+  border: inset 1px var(--text-color);
 }
 
 .flip {
@@ -109,6 +120,22 @@ select {
 
 .project-card {
   height: 30rem;
+}
+
+.sort-btn {
+  border-radius: 1rem;
+  height: 3rem;
+  width: 5rem;
+  border: #e1e1e8 2px outset;
+  cursor: pointer;
+}
+
+.sort-btn:hover {
+  transform: scale(1.05);
+}
+
+.sort-btn:active {
+  border: #e1e1e8 2px inset;
 }
 
 .stat-card {
@@ -128,6 +155,7 @@ select {
   display: flex;
   height: 35.5%;
   width: 75%;
+  gap: 4.5rem;
 }
 
 .text-input {
@@ -142,6 +170,23 @@ select {
   gap: 5%;
   height: 60.5%;
   width: 75svw;
+  overflow: hidden;
+}
+
+#abandoned-sort-btn {
+  background-color: crimson;
+}
+
+#active-sort-btn {
+  background-color: #00d73d;
+}
+
+#all-sort-btn {
+  background-color: cornsilk;
+}
+
+#hiatus-sort-btn {
+  background-color: #e0c34f;
 }
 
 #new-card {
@@ -186,6 +231,10 @@ select {
 #new-card-back {
   transform: rotateY(180deg);
   width: 22rem;
+}
+
+#stable-sort-btn {
+  background-color: cornflowerblue;
 }
 
 #status-diagram {

@@ -1,6 +1,13 @@
 const newCardFront = document.getElementById("new-card-front");
 const newCardForm = document.getElementById("new-card-form");
 const newCardInner = document.getElementById("new-card-inner");
+const sortAll = document.getElementById("all-sort-btn");
+const sortActive = document.getElementById("active-sort-btn");
+const sortStable = document.getElementById("stable-sort-btn");
+const sortHiatus = document.getElementById("hiatus-sort-btn");
+const sortAbandoned = document.getElementById("abandoned-sort-btn");
+
+let projectStatus = [];
 
 newCardFront.addEventListener("click", () => {
   newCardInner.classList.add("flip");
@@ -26,9 +33,47 @@ newCardForm.addEventListener("submit", (e) => {
     JSON.stringify(inputObject),
   );
 
-  renderProjectCards();
+  renderProjectCards(getAllProjects());
+  updateStatCard(getAllProjects().length, projectStatus);
 
   newCardInner.classList.remove("flip");
+});
+
+sortAll.addEventListener("click", (e) => {
+  renderProjectCards(getAllProjects());
+  updateStatCard(getAllProjects().length, projectStatus);
+});
+
+sortActive.addEventListener("click", (e) => {
+  const filteredProjects = getAllProjects().filter(
+    (p) => p.status === "active",
+  );
+  renderProjectCards(filteredProjects);
+  updateStatCard(filteredProjects.length, projectStatus);
+});
+
+sortStable.addEventListener("click", (e) => {
+  const filteredProjects = getAllProjects().filter(
+    (p) => p.status === "stable",
+  );
+  renderProjectCards(filteredProjects);
+  updateStatCard(filteredProjects.length, projectStatus);
+});
+
+sortHiatus.addEventListener("click", (e) => {
+  const filteredProjects = getAllProjects().filter(
+    (p) => p.status === "hiatus",
+  );
+  renderProjectCards(filteredProjects);
+  updateStatCard(filteredProjects.length, projectStatus);
+});
+
+sortAbandoned.addEventListener("click", (e) => {
+  const filteredProjects = getAllProjects().filter(
+    (p) => p.status === "abandoned",
+  );
+  renderProjectCards(filteredProjects);
+  updateStatCard(filteredProjects.length, projectStatus);
 });
 
 function getAllProjects() {
@@ -59,6 +104,7 @@ function updateStatCard(numberOfProjects, status) {
 
   const projectsNum = document.createElement("p");
   projectsNum.textContent = `Total projects: ${numberOfProjects}`;
+
   const currentStatus = document.createElement("h4");
   currentStatus.textContent = "Current status:";
 
@@ -93,12 +139,10 @@ function updateStatCard(numberOfProjects, status) {
       abandonedProjects,
       statBar,
     );
+  projectStatus = [];
 }
 
-function renderProjectCards() {
-  const projects = getAllProjects();
-  const status = [];
-
+function renderProjectCards(projects) {
   document.querySelector(".cards-container").replaceChildren();
 
   projects.forEach((project) => {
@@ -126,17 +170,21 @@ function renderProjectCards() {
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", (e) => {
       localStorage.removeItem(`project_${project.projectName}`);
-      renderProjectCards();
+      const allProjects = getAllProjects();
+      renderProjectCards(allProjects.length);
+      updateStatCard(allProjects.length);
     });
 
     const deleteAllBtn = document.createElement("button");
     deleteAllBtn.classList.add("delete-btn");
     deleteAllBtn.textContent = "Delete All";
     deleteAllBtn.addEventListener("click", (e) => {
+      const allProjects = getAllProjects();
       projects.forEach((p) => {
         localStorage.removeItem(`project_${p.projectName}`);
       });
-      renderProjectCards();
+      renderProjectCards(allProjects);
+      updateStatCard(allProjects);
     });
 
     projectCard.append(
@@ -152,11 +200,10 @@ function renderProjectCards() {
       deleteAllBtn,
     );
 
-    status.push(project.status);
+    projectStatus.push(project.status);
     document.querySelector(".cards-container").append(projectCard);
   });
-
-  updateStatCard(projects.length, status);
 }
 
-renderProjectCards();
+renderProjectCards(getAllProjects());
+updateStatCard(getAllProjects().length, projectStatus);

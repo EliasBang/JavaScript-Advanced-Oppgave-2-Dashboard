@@ -14,7 +14,7 @@ newCardForm.addEventListener("submit", (e) => {
     projectName: form.projectName.value,
     repoLink: form.repoLink.value,
     status: form.status.value,
-    previousIssues: form.previousIssue.value,
+    previousIssue: form.previousIssue.value,
     currentIssue: form.currentIssue.value,
     nextIssue: form.nextIssue.value,
     dateStarted: form.dateStarted.value,
